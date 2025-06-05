@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - FloodGuard | Sistema Inteligente de Prevenção a Enchentes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        .hero-about {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="30" cy="30" r="4"/></g></svg>') repeat;
+        }
+        
+        .mission-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .mission-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .tech-item {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+        
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .impact-counter {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .counter-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+            text-align: left;
+        }
+        
+        .timeline-item:nth-child(even) {
+            margin-right: auto;
+            text-align: right;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .timeline-date {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                margin-left: 40px !important;
+                text-align: left !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shield-alt me-2"></i>FloodGuard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Início
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="monitoring.html">
+                            <i class="fas fa-chart-line me-1"></i>Monitoramento
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="alerts.html">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Alertas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="evacuation.html">
+                            <i class="fas fa-route me-1"></i>Evacuação
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">
+                            <i class="fas fa-info-circle me-1"></i>Sobre
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Sobre o FloodGuard</h1>
+                    <p class="lead mb-4">
+                        Uma solução inovadora desenvolvida para combater os desafios das enchentes no Brasil, 
+                        utilizando tecnologia de ponta para salvar vidas e proteger comunidades.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <span class="badge bg-light text-dark px-3 py-2 rounded-pill">
+                            <i class="fas fa-award me-2"></i>Projeto Escolar 2024
+                        </span>
+                        <span class="badge bg-light text-dark px-3 py-2 rounded-pill">
+                            <i class="fas fa-users me-2"></i>Equipe Multidisciplinar
+                        </span>
+                        <span class="badge bg-light text-dark px-3 py-2 rounded-pill">
+                            <i class="fas fa-globe me-2"></i>Impacto Social
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="mission-icon" style="width: 150px; height: 150px; font-size: 4rem;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="mission-card text-center">
+                        <div class="mission-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Missão</h3>
+                        <p class="text-muted">
+                            Desenvolver tecnologias inteligentes que previnam desastres naturais, 
+                            protegendo vidas e reduzindo danos causados por enchentes no Brasil.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mission-card text-center">
+                        <div class="mission-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Visão</h3>
+                        <p class="text-muted">
+                            Ser referência em sistemas de prevenção a enchentes, 
+                            criando um futuro onde desastres naturais não causem perdas humanas.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mission-card text-center">
+                        <div class="mission-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Valores</h3>
+                        <p class="text-muted">
+                            Inovação, responsabilidade social, sustentabilidade, 
+                            transparência e compromisso com a segurança da população.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologias Utilizadas -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Tecnologias Utilizadas</h2>
+                <p class="text-muted">Construído com as melhores tecnologias web modernas</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h5 class="fw-bold">HTML5</h5>
+                    <p class="text-muted mb-0">Estrutura semântica e acessível</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h5 class="fw-bold">CSS3</h5>
+                    <p class="text-muted mb-0">Design responsivo e animações</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h5 class="fw-bold">JavaScript</h5>
+                    <p class="text-muted mb-0">Interatividade e funcionalidades</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-bootstrap"></i>
+                    </div>
+                    <h5 class="fw-bold">Bootstrap</h5>
+                    <p class="text-muted mb-0">Framework CSS responsivo</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h5 class="fw-bold">Chart.js</h5>
+                    <p class="text-muted mb-0">Visualização de dados</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h5 class="fw-bold">Mapas Interativos</h5>
+                    <p class="text-muted mb-0">Navegação e rotas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impacto Esperado -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Impacto Esperado</h2>
+                <p class="text-muted">Resultados que esperamos alcançar com o FloodGuard</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="impact-counter">
+                        <span class="counter-number">85%</span>
+                        <div>Redução de perdas humanas</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="impact-counter">
+                        <span class="counter-number">70%</span>
+                        <div>Diminuição de danos materiais</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="impact-counter">
+                        <span class="counter-number">90%</span>
+                        <div>Eficiência em evacuações</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="impact-counter">
+                        <span class="counter-number">60%</span>
+                        <div>Redução de custos públicos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline de Desenvolvimento -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Linha do Tempo do Projeto</h2>
+                <p class="text-muted">Etapas de desenvolvimento do FloodGuard</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Fase 1</div>
+                        <h5 class="fw-bold">Pesquisa e Análise</h5>
+                        <p class="text-muted mb-0">
+                            Estudo dos problemas de enchentes no Brasil e análise de soluções existentes.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Fase 2</div>
+                        <h5 class="fw-bold">Design e Prototipagem</h5>
+                        <p class="text-muted mb-0">
+                            Criação dos wireframes, design da interface e definição da arquitetura do sistema.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Fase 3</div>
+                        <h5 class="fw-bold">Desenvolvimento</h5>
+                        <p class="text-muted mb-0">
+                            Implementação das funcionalidades, criação das páginas e integração dos sistemas.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Fase 4</div>
+                        <h5 class="fw-bold">Testes e Validação</h5>
+                        <p class="text-muted mb-0">
+                            Testes de usabilidade, verificação de responsividade e validação das funcionalidades.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nossa Equipe</h2>
+                <p class="text-muted">Estudantes dedicados ao desenvolvimento de soluções inovadoras</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member">
+                        <div class="team-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h5 class="fw-bold">Desenvolvedor Frontend</h5>
+                        <p class="text-primary mb-2">Interface e Experiência do Usuário</p>
+                        <p class="text-muted mb-0">
+                            Responsável pelo design e implementação da interface intuitiva e responsiva.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member">
+                        <div class="team-avatar">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h5 class="fw-bold">Desenvolvedor Backend</h5>
+                        <p class="text-primary mb-2">Lógica e Funcionalidades</p>
+                        <p class="text-muted mb-0">
+                            Implementação da lógica de negócio e sistemas de processamento de dados.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="team-member">
+                        <div class="team-avatar">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h5 class="fw-bold">Analista de Dados</h5>
+                        <p class="text-primary mb-2">Análise e Visualização</p>
+                        <p class="text-muted mb-0">
+                            Especialista em análise de dados meteorológicos e criação de dashboards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3">Faça Parte da Solução</h2>
+            <p class="lead mb-4">
+                Ajude a prevenir desastres naturais e proteger vidas com tecnologia inteligente.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="monitoring.html" class="btn btn-light btn-lg px-4">
+                    <i class="fas fa-chart-line me-2"></i>Ver Dashboard
+                </a>
+                <a href="alerts.html" class="btn btn-outline-light btn-lg px-4">
+                    <i class="fas fa-bell me-2"></i>Sistema de Alertas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-shield-alt me-2"></i>FloodGuard
+                    </h5>
+                    <p class="text-muted">
+                        Sistema Inteligente de Prevenção a Enchentes - Protegendo vidas através da tecnologia.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white-50">
+                            <i class="fab fa-github fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white-50">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </a>
+                        <a href="#" class="text-white-50">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Navegação</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none">Início</a></li>
+                        <li><a href="monitoring.html" class="text-white-50 text-decoration-none">Monitoramento</a></li>
+                        <li><a href="alerts.html" class="text-white-50 text-decoration-none">Alertas</a></li>
+                        <li><a href="evacuation.html" class="text-white-50 text-decoration-none">Evacuação</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Suporte</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none">Documentação</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">FAQ</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Contato</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Reportar Bug</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0">
+                        © 2024 FloodGuard. Projeto Escolar - Prevenção a Enchentes.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white-50 mb-0">
+                        Desenvolvido com <i class="fas fa-heart text-danger"></i> para um Brasil mais seguro.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Contador animado
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current) + '%';
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target + '%';
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer para animação dos contadores
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.classList.contains('impact-counter')) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar contadores
+        document.querySelectorAll('.impact-counter').forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // Animação suave para elementos da timeline
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'all 0.6s ease';
+            timelineObserver.observe(item);
+        });
+
+        // Efeito de hover nas cards de tecnologia
+        document.querySelectorAll('.tech-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.background = 'linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.background = 'white';
+            });
+        });
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Feedback visual para botões
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 300);
+            });
+        });
+
+        // Log para desenvolvimento
+        console.log('🌊 FloodGuard - Página Sobre carregada com sucesso!');
+        console.log('📊 Sistema de prevenção a enchentes ativo');
+    </script>
+</body>
+</html>
