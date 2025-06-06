@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloodGuard - Sistema Inteligente de Prevenção e Resposta a Enchentes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-shield-alt me-2"></i>FloodGuard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="fas fa-home me-1"></i>Início
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="monitoring.html">
+                            <i class="fas fa-chart-line me-1"></i>Monitoramento
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="alerts.html">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Alertas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="evacuation.html">
+                            <i class="fas fa-route me-1"></i>Evacuação
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-1"></i>Sobre
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container text-center text-white position-relative">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold mb-4 hero-title">
+                        Protegendo Vidas Contra Enchentes
+                    </h1>
+                    <p class="lead mb-5 hero-subtitle">
+                        Sistema inteligente de prevenção, monitoramento e resposta rápida a eventos extremos de enchentes
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="monitoring.html" class="btn btn-warning btn-lg me-3 pulse-animation">
+                            <i class="fas fa-chart-line me-2"></i>Ver Monitoramento
+                        </a>
+                        <a href="alerts.html" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Verificar Alertas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold text-primary mb-4">O Problema das Enchentes</h2>
+                    <p class="lead mb-4">
+                        As enchentes são um dos eventos extremos mais devastadores no Brasil, causando:
+                    </p>
+                    <div class="problem-stats">
+                        <div class="stat-item mb-3">
+                            <div class="stat-icon">
+                                <i class="fas fa-skull-crossbones text-danger"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h5 class="fw-bold">Perdas Humanas</h5>
+                                <p>Mais de 1.000 mortes por ano no Brasil devido a enchentes e deslizamentos</p>
+                            </div>
+                        </div>
+                        <div class="stat-item mb-3">
+                            <div class="stat-icon">
+                                <i class="fas fa-home text-warning"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h5 class="fw-bold">Desabrigados</h5>
+                                <p>Centenas de milhares de pessoas perdem suas casas anualmente</p>
+                            </div>
+                        </div>
+                        <div class="stat-item mb-3">
+                            <div class="stat-icon">
+                                <i class="fas fa-dollar-sign text-success"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h5 class="fw-bold">Prejuízos Econômicos</h5>
+                                <p>Bilhões em perdas materiais e interrupção de serviços essenciais</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="flood-visualization">
+                        <div class="city-container">
+                            <div class="buildings">
+                                <div class="building building-1"></div>
+                                <div class="building building-2"></div>
+                                <div class="building building-3"></div>
+                                <div class="building building-4"></div>
+                            </div>
+                            <div class="flood-water" id="floodWater">
+                                <div class="water-wave wave1"></div>
+                                <div class="water-wave wave2"></div>
+                                <div class="water-wave wave3"></div>
+                            </div>
+                            <div class="rain-container" id="rainContainer"></div>
+                        </div>
+                        <button class="btn btn-primary mt-3" onclick="simulateFlood()">
+                            <i class="fas fa-play me-2"></i>Simular Enchente
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-primary">Nossa Solução: FloodGuard</h2>
+                <p class="lead">Sistema integrado de prevenção e resposta a enchentes</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="solution-card h-100" data-aos="fade-up" data-aos-delay="100">
+                        <div class="solution-icon">
+                            <i class="fas fa-satellite text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Monitoramento em Tempo Real</h5>
+                        <p>Sensores IoT e dados satelitais para previsão precisa de enchentes</p>
+                        <a href="monitoring.html" class="btn btn-outline-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="solution-card h-100" data-aos="fade-up" data-aos-delay="200">
+                        <div class="solution-icon">
+                            <i class="fas fa-bell text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold">Sistema de Alertas</h5>
+                        <p>Notificações instantâneas para população e autoridades competentes</p>
+                        <a href="alerts.html" class="btn btn-outline-primary">Ver Alertas</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="solution-card h-100" data-aos="fade-up" data-aos-delay="300">
+                        <div class="solution-icon">
+                            <i class="fas fa-route text-success"></i>
+                        </div>
+                        <h5 class="fw-bold">Rotas de Evacuação</h5>
+                        <p>Caminhos seguros em tempo real baseados em dados atualizados</p>
+                        <a href="evacuation.html" class="btn btn-outline-primary">Ver Rotas</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="solution-card h-100" data-aos="fade-up" data-aos-delay="400">
+                        <div class="solution-icon">
+                            <i class="fas fa-users text-info"></i>
+                        </div>
+                        <h5 class="fw-bold">Coordenação de Resgate</h5>
+                        <p>Dashboard para equipes de emergência e gestão de recursos</p>
+                        <a href="about.html" class="btn btn-outline-primary">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="display-6 fw-bold mb-4">Demonstração Interativa</h2>
+                    <p class="lead mb-4">
+                        Experimente como o FloodGuard funciona em situações reais de emergência
+                    </p>
+                    <div class="demo-controls">
+                        <button class="btn btn-light btn-lg me-3 mb-3" onclick="activateEmergencyMode()">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Ativar Emergência
+                        </button>
+                        <button class="btn btn-outline-light btn-lg mb-3" onclick="showRealTimeData()">
+                            <i class="fas fa-chart-bar me-2"></i>Dados Tempo Real
+                        </button>
+                    </div>
+                    <div id="demoStatus" class="demo-status mt-4"></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="demo-dashboard">
+                        <div class="dashboard-header">
+                            <h6 class="mb-0">Centro de Controle FloodGuard</h6>
+                            <span class="status-indicator" id="systemStatus">
+                                <i class="fas fa-circle text-success me-1"></i>Sistema Ativo
+                            </span>
+                        </div>
+                        <div class="dashboard-content">
+                            <div class="metric-card">
+                                <div class="metric-value" id="alertLevel">Baixo</div>
+                                <div class="metric-label">Nível de Alerta</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="affectedAreas">0</div>
+                                <div class="metric-label">Áreas Afetadas</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="evacuationRoutes">12</div>
+                                <div class="metric-label">Rotas Ativas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="display-6 fw-bold text-primary mb-4">Junte-se à Proteção Inteligente</h2>
+            <p class="lead mb-4">
+                Faça parte da rede de prevenção e proteção contra enchentes
+            </p>
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <a href="monitoring.html" class="btn btn-primary btn-lg w-100">
+                        <i class="fas fa-chart-line me-2"></i>Monitorar Agora
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="alerts.html" class="btn btn-warning btn-lg w-100">
+                        <i class="fas fa-bell me-2"></i>Receber Alertas
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="evacuation.html" class="btn btn-success btn-lg w-100">
+                        <i class="fas fa-route me-2"></i>Rotas Seguras
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold">FloodGuard</h5>
+                    <p>Sistema Inteligente de Prevenção e Resposta a Enchentes</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 FloodGuard. Desenvolvido com 💙 para salvar vidas.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
